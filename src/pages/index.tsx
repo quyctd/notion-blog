@@ -4,8 +4,6 @@ import blogStyles from '../styles/blog.module.css'
 import sharedStyles from '../styles/shared.module.css'
 
 import { getBlogLink, getDateStr, postIsPublished } from '../lib/blog-helpers'
-import { textBlock } from '../lib/notion/renderers'
-import getNotionUsers from '../lib/notion/getNotionUsers'
 import getBlogIndex from '../lib/notion/getBlogIndex'
 
 export async function getStaticProps({ preview }) {
@@ -21,6 +19,12 @@ export async function getStaticProps({ preview }) {
       return post
     })
     .filter(Boolean)
+  
+  posts.sort((a, b) => {
+    const dateA = new Date(a.Date).getTime();
+    const dateB = new Date(b.Date).getTime();
+    return dateB - dateA;
+  });
 
   return {
     props: {
@@ -70,13 +74,6 @@ const Index = ({ posts = [], preview }) => {
               {post.Date && (
                 <div className="posted">Posted: {getDateStr(post.Date)}</div>
               )}
-              <p>
-                {(!post.preview || post.preview.length === 0) &&
-                  'No preview available'}
-                {(post.preview || []).map((block, idx) =>
-                  textBlock(block, true, `${post.Slug}${idx}`)
-                )}
-              </p>
             </div>
           )
         })}
