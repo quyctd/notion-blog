@@ -1,5 +1,27 @@
 import useSWR from "swr"
+import styled from "styled-components"
 import fetcher from "../utils/fetcher"
+import Container from "../components/Container"
+import BlogCard from "../components/BlogCard"
+
+const TitleWrapper = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 4rem 0;
+`
+const Title = styled.h1`
+  font-size: 40px;
+`
+
+const SubTitle = styled.p`
+  font-size: 20px;
+  color: grey;
+`
+
+const BlogList = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 export default function Home() {
   const { data, error } = useSWR("/api/database", fetcher)
@@ -7,8 +29,20 @@ export default function Home() {
   console.log(data, error)
 
   return (
-    <div>
-      <h1>Quyctd Blog</h1>
-    </div>
+    <Container>
+      <TitleWrapper>
+        <Title>Quyctd Blog</Title>
+        <SubTitle>
+          The way I think, learn and solved all-kind-of things as a Software
+          Engineer
+        </SubTitle>
+      </TitleWrapper>
+      <BlogList>
+        <BlogCard></BlogCard>
+        <BlogCard></BlogCard>
+        <BlogCard></BlogCard>
+        <BlogCard></BlogCard>
+      </BlogList>
+    </Container>
   )
 }
