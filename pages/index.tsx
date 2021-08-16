@@ -38,10 +38,7 @@ export default function Home() {
         </SubTitle>
       </TitleWrapper>
       <BlogList>
-        <BlogCard></BlogCard>
-        <BlogCard></BlogCard>
-        <BlogCard></BlogCard>
-        <BlogCard></BlogCard>
+        <BlogCard />
       </BlogList>
     </Container>
   )

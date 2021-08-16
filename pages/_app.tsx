@@ -2,10 +2,19 @@ import type { AppProps } from "next/app"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  h1, h2, h3, h4, p, a {
+    margin: 0;
+    padding: 0;
   }
 `
 
