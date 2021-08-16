@@ -1,9 +1,14 @@
 import Head from "next/head"
 import Image from "next/image"
-import { Client } from "@notionhq/client"
+import useSWR from "swr"
+import fetcher from "../utils/fetcher"
 import styles from "../styles/Home.module.css"
 
 export default function Home() {
+  const { data, error } = useSWR("/api/database", fetcher)
+
+  console.log(data, error)
+
   return (
     <div className={styles.container}>
       <Head>
@@ -67,18 +72,4 @@ export default function Home() {
       </footer>
     </div>
   )
-}
-
-export async function getStaticProps() {
-  const notion = new Client({
-    auth: process.env.NOTION_API_KEY,
-  })
-  const DB_ID = process.env.NOTION_DATABASE_ID
-  const response = await notion.databases.query({
-    database_id: DB_ID,
-  })
-  console.log(response)
-  return {
-    props: {}, // will be passed to the page component as props
-  }
 }
