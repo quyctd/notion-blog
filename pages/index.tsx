@@ -1,8 +1,8 @@
-import useSWR from "swr"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
-import fetcher from "../utils/fetcher"
 import Container from "../components/Container"
 import BlogCard from "../components/BlogCard"
+import getDatabase from "../utils/getDatabase"
 
 const TitleWrapper = styled.div`
   max-width: 600px;
@@ -38,15 +38,12 @@ const BlogList = styled.div`
   flex-direction: column;
 `
 
-export default function Home() {
-  const { data, error } = useSWR("/api/database", fetcher)
+interface Props {
+  blogList: any
+}
 
-  console.log(data, error)
-  if (error) {
-    console.log("Error")
-  }
-
-  const blogList = data?.results || []
+export default function Home(props: Props) {
+  const blogList = props.blogList || []
 
   return (
     <Container>
@@ -64,4 +61,15 @@ export default function Home() {
       </BlogList>
     </Container>
   )
+}
+
+export const getStaticProps = async () => {
+  const blogList = await getDatabase()
+
+  return {
+    props: {
+      blogList,
+    },
+    revalidate: 10,
+  }
 }

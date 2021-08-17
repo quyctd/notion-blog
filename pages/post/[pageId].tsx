@@ -3,6 +3,7 @@ import Head from "next/head"
 import { getPageTitle } from "notion-utils"
 import { NotionAPI } from "notion-client"
 import { NotionRenderer, Code, CollectionRow } from "react-notion-x"
+import getDatabase from "../../utils/getDatabase"
 
 const notion = new NotionAPI()
 
@@ -19,11 +20,9 @@ export const getStaticProps = async (context: any) => {
 }
 
 export async function getStaticPaths() {
-  const DOMAIN = "http://localhost:3000"
-  const response = await fetch(`${DOMAIN}/api/database`)
-  const pages = await response.json()
+  const pages = await getDatabase()
 
-  const paths = pages.results.map((page: any) => ({
+  const paths = pages.map((page: any) => ({
     params: { pageId: page.id },
   }))
 
