@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import dayjs from "dayjs"
+import Link from "next/link"
 
 const BlogCardWrapper = styled.div`
   position: relative;
@@ -14,14 +16,16 @@ const BlogCardContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  border: 1px solid #dadada;
   margin: 25px 0;
   padding: 10px 30px;
   border-radius: 10px;
   transition: all 0.3s ease;
-  transform: translateX(20px);
+  transform: translateX(15px);
   &:hover {
     box-shadow: 8px 8px 30px rgb(0 0 0 / 20%);
-    transform: translate3d(20px, -5px, 0);
+    transform: translate3d(15px, -5px, 0);
+    background-color: white;
     @media only screen and (max-width: 768px) {
       transform: translate3d(0, -5px, 0);
     }
@@ -87,16 +91,15 @@ const Tag = styled.div`
   font-weight: bold;
   font-size: 12px;
   border-radius: 15px;
-  margin: 5px 0;
+  margin: 5px 15px 5px 0;
+
+  @media only screen and (max-width: 425px) {
+    margin: 5px 10px 5px 0;
+  }
 `
 
 const PublishDate = styled.p`
   font-size: 14px;
-  margin-left: 15px;
-
-  @media only screen and (max-width: 425px) {
-    margin-left: 10px;
-  }
 `
 
 const BackgroundWrapper = styled.div`
@@ -126,23 +129,38 @@ const Background = styled.img`
   box-shadow: 4px 4px 15px rgb(0 0 0 / 20%);
 `
 
-const BlogCard = () => {
+interface Props {
+  blog: any
+}
+
+const BlogCard = (props: Props) => {
+  const { blog } = props
+
+  const tags = blog.properties.Tags.multi_select
+
   return (
     <BlogCardContainer>
       <BackgroundWrapper>
-        <Background src="https://d585tldpucybw.cloudfront.net/sfimages/default-source/blogs/templates/social/reactt-light_1200x628.png?sfvrsn=43eb5f2a_2" />
+        <Background src={blog.properties.Thumbnail.url} />
       </BackgroundWrapper>
       <BlogCardWrapper>
         <SubInfo>
-          <Tag>product</Tag>
-          <PublishDate>28 Jun 2021</PublishDate>
+          {tags.map((tag: any) => (
+            <Tag key={tag.id}>{tag.name}</Tag>
+          ))}
+          <PublishDate>
+            {dayjs(blog.created_at).format("D MMM, YYYY")}
+          </PublishDate>
         </SubInfo>
-        <Title>Our new system design</Title>
+        <Title>{blog.properties.Name.title[0].text.content}</Title>
         <SubScript>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum
-          dolor sit amet consectetur adipisicing elit.
+          {blog.properties.Description.rich_text[0].text.content}
         </SubScript>
-        <Button>Read full post</Button>
+        <Link href={`/post/${blog.id}`}>
+          <a>
+            <Button>Read full post</Button>
+          </a>
+        </Link>
       </BlogCardWrapper>
     </BlogCardContainer>
   )

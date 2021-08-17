@@ -42,6 +42,11 @@ export default function Home() {
   const { data, error } = useSWR("/api/database", fetcher)
 
   console.log(data, error)
+  if (error) {
+    console.log("Error")
+  }
+
+  const blogList = data?.results || []
 
   return (
     <Container>
@@ -53,9 +58,9 @@ export default function Home() {
         </SubTitle>
       </TitleWrapper>
       <BlogList>
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
+        {blogList.map((blog: any) => (
+          <BlogCard blog={blog} key={blog.id} />
+        ))}
       </BlogList>
     </Container>
   )
