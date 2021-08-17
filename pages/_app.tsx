@@ -1,9 +1,13 @@
 import type { AppProps } from "next/app"
-import { createGlobalStyle, ThemeProvider } from "styled-components"
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
   html {
     font-family: 'Inter', sans-serif;
+  }
+
+  *, :after, :before {
+    box-sizing: border-box;
   }
 
   body {
@@ -24,12 +28,21 @@ const theme = {
   },
 }
 
+const App = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <App>
+          <Component {...pageProps} />
+        </App>
       </ThemeProvider>
     </>
   )

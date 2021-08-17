@@ -7,10 +7,11 @@ import BlogCard from "../components/BlogCard"
 const TitleWrapper = styled.div`
   max-width: 600px;
   margin: 0 auto;
-  padding: 4rem 0;
+  padding: 20px 45px;
 `
 const Title = styled.h1`
   font-size: 40px;
+  margin: 20px 0;
 `
 
 const SubTitle = styled.p`
