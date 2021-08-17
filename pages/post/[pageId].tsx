@@ -1,6 +1,6 @@
 import Head from "next/head"
 
-import { getPageTitle, getAllPagesInSpace } from "notion-utils"
+import { getPageTitle } from "notion-utils"
 import { NotionAPI } from "notion-client"
 import { NotionRenderer, Code, CollectionRow } from "react-notion-x"
 
@@ -19,28 +19,13 @@ export const getStaticProps = async (context: any) => {
 }
 
 export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: true,
-  }
+  const DOMAIN = "http://localhost:3000"
+  const response = await fetch(`${DOMAIN}/api/database`)
+  const pages = await response.json()
 
-  const rootNotionPageId = "067dd719a912471ea9a3ac10710e7fdf"
-  const rootNotionSpaceId = "fde5ac74-eea3-4527-8f00-4482710e1af3"
-
-  // This crawls all public pages starting from the given root page in order
-  // for next.js to pre-generate all pages via static site generation (SSG).
-  // This is a useful optimization but not necessary; you could just as easily
-  // set paths to an empty array to not pre-generate any pages at build time.
-  const pages = await getAllPagesInSpace(
-    rootNotionPageId,
-    rootNotionSpaceId,
-    notion.getPage.bind(notion),
-    {
-      traverseCollections: false,
-    }
-  )
-
-  const paths = Object.keys(pages).map((pageId) => `/${pageId}`)
+  const paths = pages.results.map((page: any) => ({
+    params: { pageId: page.id },
+  }))
 
   return {
     paths,
