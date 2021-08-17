@@ -8,15 +8,29 @@ const TitleWrapper = styled.div`
   max-width: 600px;
   margin: 0 auto;
   padding: 20px 45px;
+
+  @media only screen and (max-width: 768px) {
+    padding: 20px 0;
+  }
 `
 const Title = styled.h1`
   font-size: 40px;
   margin: 20px 0;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 32px;
+    text-align: center;
+  }
 `
 
 const SubTitle = styled.p`
   font-size: 20px;
   color: grey;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 18px;
+    text-align: center;
+  }
 `
 
 const BlogList = styled.div`

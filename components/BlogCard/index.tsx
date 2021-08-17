@@ -4,6 +4,10 @@ const BlogCardWrapper = styled.div`
   position: relative;
   width: 100%;
   margin-left: -30px;
+
+  @media only screen and (max-width: 768px) {
+    margin-left: 0;
+  }
 `
 
 const BlogCardContainer = styled.div`
@@ -18,17 +22,36 @@ const BlogCardContainer = styled.div`
   &:hover {
     box-shadow: 8px 8px 30px rgb(0 0 0 / 20%);
     transform: translate3d(20px, -5px, 0);
+    @media only screen and (max-width: 768px) {
+      transform: translate3d(0, -5px, 0);
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    transform: none;
+    padding: 10px;
+    margin: 18px 0;
   }
 `
 
 const Title = styled.h1`
   font-size: 35px;
   margin: 5px 0 20px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 24px;
+  }
 `
 
 const SubScript = styled.p`
   font-size: 18px;
   margin-bottom: 30px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
 `
 
 const Button = styled.button`
@@ -41,6 +64,10 @@ const Button = styled.button`
   color: white;
   border: none;
   outline: none;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const SubInfo = styled.div`
@@ -66,6 +93,10 @@ const Tag = styled.div`
 const PublishDate = styled.p`
   font-size: 14px;
   margin-left: 15px;
+
+  @media only screen and (max-width: 425px) {
+    margin-left: 10px;
+  }
 `
 
 const BackgroundWrapper = styled.div`
@@ -75,6 +106,16 @@ const BackgroundWrapper = styled.div`
   flex-shrink: 0;
   transform: translateX(-60px);
   z-index: 2;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    transform: none;
+    margin-bottom: 20px;
+  }
+
+  @media only screen and (max-width: 425px) {
+    height: 150px;
+  }
 `
 
 const Background = styled.img`
