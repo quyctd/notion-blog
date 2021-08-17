@@ -40,6 +40,8 @@ export default function Home() {
       </TitleWrapper>
       <BlogList>
         <BlogCard />
+        <BlogCard />
+        <BlogCard />
       </BlogList>
     </Container>
   )
