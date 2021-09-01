@@ -12,8 +12,8 @@ import "rc-dropdown/assets/index.css";
 // used for rendering equations (optional)
 import "katex/dist/katex.min.css";
 
-import "styles/global.css";
-import "styles/notion.css";
+import "../styles/globals.css";
+import "../styles/notion.css";
 
 const GlobalStyle = createGlobalStyle`
   html {
