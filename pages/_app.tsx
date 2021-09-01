@@ -1,40 +1,16 @@
 import type { AppProps } from "next/app";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
-// core styles shared by all of react-notion-x (required)
+import styled, { ThemeProvider } from "styled-components";
+// core styles shared by all of react-notion-x
 import "react-notion-x/src/styles.css";
-
-// used for code syntax highlighting (optional)
+// code syntax highlighting
 import "prismjs/themes/prism-tomorrow.css";
-
-// used for collection views (optional)
+// collection views
 import "rc-dropdown/assets/index.css";
-
-// used for rendering equations (optional)
+// rendering equations
 import "katex/dist/katex.min.css";
-
+// Global + Custom style
 import "../styles/globals.css";
 import "../styles/notion.css";
-
-const GlobalStyle = createGlobalStyle`
-  html {
-    font-family: 'Inter', sans-serif;
-  }
-
-  *, :after, :before {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  h1, h2, h3, h4, p, a {
-    margin: 0;
-    padding: 0;
-  }
-`;
 
 const theme = {
   colors: {
@@ -51,14 +27,11 @@ const App = styled.div`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <App>
-          <Component {...pageProps} />
-        </App>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <App>
+        <Component {...pageProps} />
+      </App>
+    </ThemeProvider>
   );
 }
 export default MyApp;

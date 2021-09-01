@@ -1,10 +1,8 @@
 import Head from "next/head";
-import cs from "classnames";
 import { getPageTitle } from "notion-utils";
 import { NotionAPI } from "notion-client";
 import { NotionRenderer, Code, CollectionRow } from "react-notion-x";
 import getDatabase from "../../utils/getDatabase";
-import styles from "./post.module.css";
 
 const notion = new NotionAPI();
 
@@ -48,7 +46,6 @@ export default function NotionPage({ recordMap }: any) {
       </Head>
 
       <NotionRenderer
-        bodyClassName={cs(styles.notion)}
         components={{
           code: Code,
           collectionRow: CollectionRow,
