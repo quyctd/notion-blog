@@ -1,16 +1,19 @@
-import type { AppProps } from "next/app"
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
+import type { AppProps } from "next/app";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 // core styles shared by all of react-notion-x (required)
-import "react-notion-x/src/styles.css"
+import "react-notion-x/src/styles.css";
 
 // used for code syntax highlighting (optional)
-import "prismjs/themes/prism-tomorrow.css"
+import "prismjs/themes/prism-tomorrow.css";
 
 // used for collection views (optional)
-import "rc-dropdown/assets/index.css"
+import "rc-dropdown/assets/index.css";
 
 // used for rendering equations (optional)
-import "katex/dist/katex.min.css"
+import "katex/dist/katex.min.css";
+
+import "styles/global.css";
+import "styles/notion.css";
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -31,20 +34,20 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-`
+`;
 
 const theme = {
   colors: {
     primary: "#0070f3",
   },
-}
+};
 
 const App = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`
+`;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -56,6 +59,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         </App>
       </ThemeProvider>
     </>
-  )
+  );
 }
-export default MyApp
+export default MyApp;

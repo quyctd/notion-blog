@@ -1,43 +1,44 @@
-import Head from "next/head"
+import Head from "next/head";
+import cs from "classnames";
+import { getPageTitle } from "notion-utils";
+import { NotionAPI } from "notion-client";
+import { NotionRenderer, Code, CollectionRow } from "react-notion-x";
+import getDatabase from "../../utils/getDatabase";
+import styles from "./post.module.css";
 
-import { getPageTitle } from "notion-utils"
-import { NotionAPI } from "notion-client"
-import { NotionRenderer, Code, CollectionRow } from "react-notion-x"
-import getDatabase from "../../utils/getDatabase"
-
-const notion = new NotionAPI()
+const notion = new NotionAPI();
 
 export const getStaticProps = async (context: any) => {
-  const pageId = context.params.pageId as string
-  const recordMap = await notion.getPage(pageId)
+  const pageId = context.params.pageId as string;
+  const recordMap = await notion.getPage(pageId);
 
   return {
     props: {
       recordMap,
     },
     revalidate: 10,
-  }
-}
+  };
+};
 
 export async function getStaticPaths() {
-  const pages = await getDatabase()
+  const pages = await getDatabase();
 
   const paths = pages.map((page: any) => ({
     params: { pageId: page.id },
-  }))
+  }));
 
   return {
     paths,
     fallback: true,
-  }
+  };
 }
 
 export default function NotionPage({ recordMap }: any) {
   if (!recordMap) {
-    return null
+    return null;
   }
 
-  const title = getPageTitle(recordMap)
+  const title = getPageTitle(recordMap);
 
   return (
     <>
@@ -47,6 +48,7 @@ export default function NotionPage({ recordMap }: any) {
       </Head>
 
       <NotionRenderer
+        bodyClassName={cs(styles.notion)}
         components={{
           code: Code,
           collectionRow: CollectionRow,
@@ -56,5 +58,5 @@ export default function NotionPage({ recordMap }: any) {
         darkMode={false}
       />
     </>
-  )
+  );
 }
