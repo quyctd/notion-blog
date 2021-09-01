@@ -13,6 +13,16 @@
 }
 
 .notion-page {
+  position: relative;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 0;
+  align-items: flex-start;
+  width: 100%;
+  max-width: var(--notion-max-width);
   padding-bottom: calc(max(5vh, 32px)) !important;
   line-height: 1.65;
 }
