@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from "styled-components"
 // core styles shared by all of react-notion-x
 import "react-notion-x/src/styles.css"
 // code syntax highlighting
-import "prismjs/themes/prism-tomorrow.css"
+import "prismjs/themes/prism.css"
 // collection views
 import "rc-dropdown/assets/index.css"
 // rendering equations
