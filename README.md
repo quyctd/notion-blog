@@ -1,3 +1,7 @@
+⚠️ This project just barely working 🚧, and contain a lot of 💩 codes, please excuse me 🤕
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
