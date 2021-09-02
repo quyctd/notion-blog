@@ -1,41 +1,61 @@
-import { useEffect, useState } from "react"
 import styled from "styled-components"
 import Container from "../components/Container"
 import BlogCard from "../components/BlogCard"
 import getDatabase from "../utils/getDatabase"
 
 const TitleWrapper = styled.div`
-  max-width: 600px;
   margin: 0 auto;
-  padding: 20px 45px;
-
-  @media only screen and (max-width: 768px) {
-    padding: 20px 0;
-  }
+  padding: 104px 12px 56px;
+  text-align: center;
 `
 const Title = styled.h1`
-  font-size: 40px;
-  margin: 20px 0;
+  font-size: 72px;
+  margin-bottom: 24px;
+  line-height: 1.1;
+  font-weight: bold;
 
   @media only screen and (max-width: 768px) {
-    font-size: 32px;
-    text-align: center;
+    font-size: 56px;
+  }
+
+  @media only screen and (max-width: 576px) {
+    font-size: 40px;
   }
 `
 
-const SubTitle = styled.p`
-  font-size: 20px;
-  color: grey;
+const SubTitle = styled.h2`
+  font-size: 26px;
+  color: #767676;
+  line-height: 1.35;
+  font-weight: 400;
 
   @media only screen and (max-width: 768px) {
-    font-size: 18px;
-    text-align: center;
+    font-size: 24px;
   }
+
+  @media only screen and (max-width: 576px) {
+    font-size: 21px;
+  }
+`
+
+const BlogSection = styled.section`
+  padding: 64px 0;
 `
 
 const BlogList = styled.div`
-  display: flex;
-  flex-direction: column;
+  max-width: 1320px;
+  margin: 0 auto;
+`
+
+const GridFeed = styled.div`
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+
+  @media (min-width: 768px) {
+    grid-gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
 `
 
 interface Props {
@@ -50,15 +70,19 @@ export default function Home(props: Props) {
       <TitleWrapper>
         <Title>Quyctd Blog</Title>
         <SubTitle>
-          The way I think, learn and solved all-kind-of things as a Software
-          Engineer
+          An interesting, super exciting, completely spectacular, or possibly
+          ordinary blog
         </SubTitle>
       </TitleWrapper>
-      <BlogList>
-        {blogList.map((blog: any) => (
-          <BlogCard blog={blog} key={blog.id} />
-        ))}
-      </BlogList>
+      <BlogSection>
+        <BlogList>
+          <GridFeed>
+            {blogList.map((blog: any) => (
+              <BlogCard blog={blog} key={blog.id} />
+            ))}
+          </GridFeed>
+        </BlogList>
+      </BlogSection>
     </Container>
   )
 }

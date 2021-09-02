@@ -2,82 +2,43 @@ import styled from "styled-components"
 import dayjs from "dayjs"
 import Link from "next/link"
 
-const BlogCardWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  margin-left: -30px;
-
-  @media only screen and (max-width: 768px) {
-    margin-left: 0;
-  }
-`
-
 const BlogCardContainer = styled.div`
+  position: relative;
+  background-color: #fff;
+  border-radius: 4px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: 1px solid #dadada;
-  margin: 25px 0;
-  padding: 10px 30px;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  transform: translateX(15px);
+  flex-direction: column;
+  transition: all 0.2s cubic-bezier(0.25, 0.7, 0.25, 1);
+  border: 1px solid #e1e1e1;
+
   &:hover {
-    box-shadow: 8px 8px 30px rgb(0 0 0 / 20%);
-    transform: translate3d(15px, -5px, 0);
-    background-color: white;
-    @media only screen and (max-width: 768px) {
-      transform: translate3d(0, -5px, 0);
-    }
-  }
-
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-    transform: none;
-    padding: 10px;
-    margin: 18px 0;
+    box-shadow: 0 35px 80px -20px rgba(0, 0, 10, 0.05),
+      0 30px 60px -30px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
   }
 `
 
-const Title = styled.h1`
-  font-size: 35px;
-  margin: 5px 0 20px;
+const Title = styled.h5`
+  font-weight: 800;
+  color: #111;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 21px;
+  line-height: 1.3;
+  overflow-wrap: break-word;
 
-  @media only screen and (max-width: 768px) {
+  @media (min-width: 576px) {
     font-size: 24px;
+    line-height: 1.2;
   }
 `
 
-const SubScript = styled.p`
-  font-size: 18px;
-  margin-bottom: 30px;
-
-  @media only screen and (max-width: 768px) {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-`
-
-const Button = styled.button`
-  border-radius: 25px;
-  text-transform: capitalize;
-  padding: 12px 20px;
-  background-color: #0067ff;
-  font-size: 14px;
-  margin: 10px 0;
-  color: white;
-  border: none;
-  outline: none;
-
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-  }
-`
-
-const SubInfo = styled.div`
+const TagContainer = styled.div`
+  font-size: 15px;
+  margin-bottom: 8px;
   display: flex;
   flex-direction: row;
-  align-items: center;
 `
 
 const Tag = styled.div`
@@ -98,35 +59,42 @@ const Tag = styled.div`
   }
 `
 
-const PublishDate = styled.p`
-  font-size: 14px;
+const CardImgContainer = styled.div`
+  padding-top: 50%;
+  position: relative;
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
 `
 
-const BackgroundWrapper = styled.div`
-  width: 200px;
-  height: 200px;
-  border-radius: 20px;
-  flex-shrink: 0;
-  transform: translateX(-60px);
-  z-index: 2;
-
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-    transform: none;
-    margin-bottom: 20px;
-  }
-
-  @media only screen and (max-width: 425px) {
-    height: 150px;
-  }
-`
-
-const Background = styled.img`
+const StyledImage = styled.img`
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 4px 4px 15px rgb(0 0 0 / 20%);
+`
+
+const CardBody = styled.div`
+  padding: 16px 16px 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  @media (min-width: 576px) {
+    padding: 24px 24px 20px;
+  }
+`
+
+const CardInfoContainer = styled.span`
+  color: #767676;
+  margin-top: auto;
+  font-size: 15px;
+  margin-bottom: 8px;
+`
+
+const Divider = styled.span`
+  margin-left: 4px;
+  margin-right: 4px;
 `
 
 interface Props {
@@ -140,28 +108,26 @@ const BlogCard = (props: Props) => {
 
   return (
     <BlogCardContainer>
-      <BackgroundWrapper>
-        <Background src={blog.properties.Thumbnail.url} />
-      </BackgroundWrapper>
-      <BlogCardWrapper>
-        <SubInfo>
-          {tags.map((tag: any) => (
-            <Tag key={tag.id}>{tag.name}</Tag>
-          ))}
-          <PublishDate>
-            {dayjs(blog.created_at).format("D MMM, YYYY")}
-          </PublishDate>
-        </SubInfo>
-        <Title>{blog.properties.Name.title[0].text.content}</Title>
-        <SubScript>
-          {blog.properties.Description.rich_text[0].text.content}
-        </SubScript>
-        <Link href={`/post/${blog.id}`}>
-          <a>
-            <Button>Read full post</Button>
-          </a>
-        </Link>
-      </BlogCardWrapper>
+      <Link href={`/post/${blog.id}`}>
+        <a>
+          <CardImgContainer>
+            <StyledImage src={blog.properties.Thumbnail.url} />
+          </CardImgContainer>
+          <CardBody>
+            <TagContainer>
+              {tags.map((tag: any) => (
+                <Tag key={tag.id}>{tag.name}</Tag>
+              ))}
+            </TagContainer>
+            <Title>{blog.properties.Name.title[0].text.content}</Title>
+            <CardInfoContainer>
+              <span>Natalie Brennan</span>
+              <Divider>·</Divider>
+              {dayjs(blog.created_at).format("D MMM, YYYY")}
+            </CardInfoContainer>
+          </CardBody>
+        </a>
+      </Link>
     </BlogCardContainer>
   )
 }
