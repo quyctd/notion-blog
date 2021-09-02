@@ -104,7 +104,7 @@ const BlogCard = (props: Props) => {
 
   return (
     <BlogCardContainer>
-      <Link href={`/post/${blog.id}`}>
+      <Link href={`/${blog.properties.Slug.rich_text[0].text.content}`}>
         <a style={{ textDecoration: "none" }}>
           <CardImgContainer>
             <StyledImage src={blog.properties.Thumbnail.url} />
@@ -117,8 +117,6 @@ const BlogCard = (props: Props) => {
             </TagContainer>
             <Title>{blog.properties.Name.title[0].text.content}</Title>
             <CardInfoContainer>
-              <span>Natalie Brennan</span>
-              <Divider>·</Divider>
               {dayjs(blog.created_at).format("D MMM, YYYY")}
             </CardInfoContainer>
           </CardBody>

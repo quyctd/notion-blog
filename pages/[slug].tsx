@@ -1,14 +1,32 @@
 import Head from "next/head"
 import Link from "next/link"
+import fs from "fs/promises"
+import path from "path"
 import { getPageTitle } from "notion-utils"
 import { NotionAPI } from "notion-client"
 import { NotionRenderer, Code, CollectionRow, Collection } from "react-notion-x"
-import getDatabase from "../../utils/getDatabase"
+import getDatabase from "../utils/getDatabase"
 
-const notion = new NotionAPI()
+const PagesFilePath = path.join(process.cwd(), "pages.json")
+
+function savePagesToFile(pages: any) {
+  const pageObj: any = {}
+  for (let page of pages) {
+    pageObj[page.properties.Slug.rich_text[0].text.content] = page.id
+  }
+  return fs.writeFile(PagesFilePath, JSON.stringify(pageObj))
+}
+
+async function getPageIdFromFile(slug: string) {
+  const pagesFile = await fs.readFile(PagesFilePath)
+  const pageObj = JSON.parse(pagesFile.toString())
+  return pageObj[slug]
+}
 
 export const getStaticProps = async (context: any) => {
-  const pageId = context.params.pageId as string
+  const notion = new NotionAPI()
+  const slug = context.params.slug as string
+  const pageId = await getPageIdFromFile(slug)
   const recordMap = await notion.getPage(pageId)
 
   return {
@@ -21,14 +39,17 @@ export const getStaticProps = async (context: any) => {
 
 export async function getStaticPaths() {
   const pages = await getDatabase()
+  await savePagesToFile(pages)
 
   const paths = pages.map((page: any) => ({
-    params: { pageId: page.id },
+    params: {
+      slug: page.properties.Slug.rich_text[0].text.content,
+    },
   }))
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }
 
