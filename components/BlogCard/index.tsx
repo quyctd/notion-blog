@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import dayjs from "dayjs"
 import Link from "next/link"
+import Divider from "../DotDivider"
 
 const BlogCardContainer = styled.div`
   position: relative;
@@ -90,11 +91,6 @@ const CardInfoContainer = styled.span`
   margin-top: auto;
   font-size: 15px;
   margin-bottom: 8px;
-`
-
-const Divider = styled.span`
-  margin-left: 4px;
-  margin-right: 4px;
 `
 
 interface Props {

@@ -11,6 +11,7 @@ import "katex/dist/katex.min.css"
 // Global + Custom style
 import "../styles/globals.css"
 import "../styles/notion.css"
+import Footer from "../components/Footer"
 
 const theme = {
   colors: {
@@ -30,6 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <App>
         <Component {...pageProps} />
+        <Footer />
       </App>
     </ThemeProvider>
   )
