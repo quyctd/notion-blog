@@ -1,3 +1,4 @@
+import Head from "next/head"
 import styled from "styled-components"
 import Container from "../components/Container"
 import BlogCard from "../components/BlogCard"
@@ -8,6 +9,7 @@ const TitleWrapper = styled.div`
   padding: 104px 12px 56px;
   text-align: center;
 `
+
 const Title = styled.h1`
   font-size: 48px;
   margin-bottom: 24px;
@@ -66,24 +68,29 @@ export default function Home(props: Props) {
   const blogList = props.blogList || []
 
   return (
-    <Container>
-      <TitleWrapper>
-        <Title>Quyctd Blog</Title>
-        <SubTitle>
-          An interesting, super exciting, completely spectacular, or possibly
-          ordinary blog
-        </SubTitle>
-      </TitleWrapper>
-      <BlogSection>
-        <BlogList>
-          <GridFeed>
-            {blogList.map((blog: any) => (
-              <BlogCard blog={blog} key={blog.id} />
-            ))}
-          </GridFeed>
-        </BlogList>
-      </BlogSection>
-    </Container>
+    <>
+      <Head>
+        <title>Quyctd blog</title>
+      </Head>
+      <Container>
+        <TitleWrapper>
+          <Title>Quyctd Blog</Title>
+          <SubTitle>
+            An interesting, super exciting, completely spectacular, or possibly
+            ordinary blog
+          </SubTitle>
+        </TitleWrapper>
+        <BlogSection>
+          <BlogList>
+            <GridFeed>
+              {blogList.map((blog: any) => (
+                <BlogCard blog={blog} key={blog.id} />
+              ))}
+            </GridFeed>
+          </BlogList>
+        </BlogSection>
+      </Container>
+    </>
   )
 }
 
