@@ -13,7 +13,7 @@
 }
 
 .notion-viewport {
-  display: block;
+  position: initial;
 }
 
 .notion-page {
