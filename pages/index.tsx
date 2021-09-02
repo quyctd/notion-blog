@@ -9,32 +9,32 @@ const TitleWrapper = styled.div`
   text-align: center;
 `
 const Title = styled.h1`
-  font-size: 72px;
+  font-size: 48px;
   margin-bottom: 24px;
   line-height: 1.1;
   font-weight: bold;
 
   @media only screen and (max-width: 768px) {
-    font-size: 56px;
+    font-size: 40px;
   }
 
   @media only screen and (max-width: 576px) {
-    font-size: 40px;
+    font-size: 32px;
   }
 `
 
 const SubTitle = styled.h2`
-  font-size: 26px;
+  font-size: 21px;
   color: #767676;
   line-height: 1.35;
   font-weight: 400;
 
   @media only screen and (max-width: 768px) {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   @media only screen and (max-width: 576px) {
-    font-size: 21px;
+    font-size: 16px;
   }
 `
 

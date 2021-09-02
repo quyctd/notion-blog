@@ -105,7 +105,7 @@ const BlogCard = (props: Props) => {
   return (
     <BlogCardContainer>
       <Link href={`/post/${blog.id}`}>
-        <a>
+        <a style={{ textDecoration: "none" }}>
           <CardImgContainer>
             <StyledImage src={blog.properties.Thumbnail.url} />
           </CardImgContainer>

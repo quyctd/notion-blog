@@ -12,30 +12,15 @@ const FooterWrapper = styled.footer`
   justify-content: center;
 `
 
-const ExternalLink = styled.a`
-  font-size: 16px;
-  color: #3093ef;
-  text-decoration: underline;
-
-  &:hover {
-    cursor: pointer;
-    text-decoration: none;
-  }
-`
-
 const Footer = () => {
   return (
     <FooterWrapper>
       <span>
-        <ExternalLink href="https://www.facebook.com/akashi.211/">
-          Facebook
-        </ExternalLink>
+        <a href="https://www.facebook.com/akashi.211/">Facebook</a>
         <Divider>·</Divider>
-        <ExternalLink href="https://github.com/quyctd">Github</ExternalLink>
+        <a href="https://github.com/quyctd">Github</a>
         <Divider>·</Divider>
-        <ExternalLink href="https://www.linkedin.com/in/quyctd/">
-          LinkedIn
-        </ExternalLink>
+        <a href="https://www.linkedin.com/in/quyctd/">LinkedIn</a>
       </span>
       <small style={{ display: "block", marginTop: "1rem" }}>
         © <time>{YEAR}</time> Quyctd
