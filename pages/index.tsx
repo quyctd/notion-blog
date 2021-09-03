@@ -23,7 +23,7 @@ const Home = () => {
         <title>Quyctd | About</title>
       </Head>
       <Container>
-        <PageTitle title="Dinh Quy" />
+        <PageTitle title="Dinh Quy" subtitle="About me" />
         <Flex>
           <Paragraph>
             Quy (b. 1998 Vietnam, live in Hanoi), is a developer, focusing on

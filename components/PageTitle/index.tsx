@@ -2,13 +2,13 @@ import styled from "styled-components"
 
 const TitleWrapper = styled.div`
   margin: 0 auto;
-  padding: 84px 12px 48px;
+  padding: 84px 12px;
   text-align: center;
 `
 
 const Title = styled.h1`
   font-size: 2.5rem;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   line-height: 1.1;
   font-weight: bold;
 

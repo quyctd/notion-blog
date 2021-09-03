@@ -6,7 +6,8 @@ import BlogCard from "../../components/BlogCard"
 import getDatabase from "../../utils/getDatabase"
 
 const BlogSection = styled.section`
-  padding: 64px 0;
+  padding-top: 1em;
+  padding-bottom: 64px;
 `
 
 const BlogList = styled.div`
