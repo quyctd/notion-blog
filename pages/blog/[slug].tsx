@@ -5,7 +5,7 @@ import path from "path"
 import { getPageTitle } from "notion-utils"
 import { NotionAPI } from "notion-client"
 import { NotionRenderer, Code, CollectionRow, Collection } from "react-notion-x"
-import getDatabase from "../../utils/getDatabase"
+import getDatabase from "utils/getDatabase"
 
 const PagesFilePath = path.join(process.cwd(), "pages.json")
 

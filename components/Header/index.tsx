@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { useRouter } from "next/router"
 import styled from "styled-components"
 
 const Head = styled.header`
@@ -60,8 +59,6 @@ const Links = styled.div`
 `
 
 const Header = () => {
-  // const router = useRouter()
-
   return (
     <Head>
       <Nav>

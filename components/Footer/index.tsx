@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Divider from "../DotDivider"
+import Divider from "components/DotDivider"
 
 const YEAR = new Date().getFullYear()
 

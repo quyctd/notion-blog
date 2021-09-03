@@ -1,7 +1,7 @@
 import Head from "next/head"
 import styled from "styled-components"
-import PageTitle from "../components/PageTitle"
-import Container from "../components/Container"
+import PageTitle from "components/PageTitle"
+import Container from "components/Container"
 
 const Paragraph = styled.p`
   margin-top: 1em;

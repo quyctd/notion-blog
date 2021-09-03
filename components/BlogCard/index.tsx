@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import dayjs from "dayjs"
 import Link from "next/link"
-import Divider from "../DotDivider"
 
 const BlogCardContainer = styled.div`
   position: relative;

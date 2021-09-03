@@ -1,8 +1,8 @@
 import type { AppProps } from "next/app"
 import styled, { ThemeProvider } from "styled-components"
 
-import Footer from "../components/Footer"
-import Header from "../components/Header"
+import Footer from "components/Footer"
+import Header from "components/Header"
 
 // core styles shared by all of react-notion-x
 import "react-notion-x/src/styles.css"
@@ -13,8 +13,8 @@ import "rc-dropdown/assets/index.css"
 // rendering equations
 import "katex/dist/katex.min.css"
 // Global + Custom style
-import "../styles/globals.css"
-import "../styles/notion.css"
+import "styles/globals.css"
+import "styles/notion.css"
 
 const theme = {
   colors: {

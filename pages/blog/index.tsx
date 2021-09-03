@@ -1,9 +1,9 @@
 import Head from "next/head"
 import styled from "styled-components"
-import PageTitle from "../../components/PageTitle"
-import Container from "../../components/Container"
-import BlogCard from "../../components/BlogCard"
-import getDatabase from "../../utils/getDatabase"
+import PageTitle from "components/PageTitle"
+import Container from "components/Container"
+import BlogCard from "components/BlogCard"
+import getDatabase from "utils/getDatabase"
 
 const BlogSection = styled.section`
   padding-top: 1em;
