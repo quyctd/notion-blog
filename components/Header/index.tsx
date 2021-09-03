@@ -38,8 +38,12 @@ const Logo = styled.h3`
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 20px;
   padding: 4px 6px;
+  a {
+    font-size: 20px;
+    color: #1a202c;
+    text-decoration: none;
+  }
 `
 
 const Links = styled.div`
@@ -63,13 +67,14 @@ const Header = () => {
   return (
     <Head>
       <Nav>
-        <Logo>quyctd.dev</Logo>
+        <Logo>
+          <Link href="/">
+            <a>quyctd.dev</a>
+          </Link>
+        </Logo>
         <Links>
           <Link href="/blog">
             <a>Thoughts</a>
-          </Link>
-          <Link href="/blog">
-            <a>Snippets</a>
           </Link>
           <Link href="/">
             <a>About</a>

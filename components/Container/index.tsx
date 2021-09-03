@@ -6,6 +6,7 @@ const Container = styled.div`
   width: 100%;
   padding-left: 24px;
   padding-right: 24px;
+  max-width: 1100px;
 
   @media only screen and (max-width: 768px) {
     padding: 0 12px;
