@@ -1,5 +1,9 @@
 import type { AppProps } from "next/app"
 import styled, { ThemeProvider } from "styled-components"
+
+import Footer from "../components/Footer"
+import Header from "../components/Header"
+
 // core styles shared by all of react-notion-x
 import "react-notion-x/src/styles.css"
 // code syntax highlighting
@@ -11,7 +15,6 @@ import "katex/dist/katex.min.css"
 // Global + Custom style
 import "../styles/globals.css"
 import "../styles/notion.css"
-import Footer from "../components/Footer"
 
 const theme = {
   colors: {
@@ -30,6 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <App>
+        <Header />
         <Component {...pageProps} />
         <Footer />
       </App>

@@ -23,7 +23,7 @@ const Footer = () => {
         <a href="https://www.linkedin.com/in/quyctd/">LinkedIn</a>
       </span>
       <small style={{ display: "block", marginTop: "1rem" }}>
-        © <time>{YEAR}</time> Quyctd
+        © <time>{YEAR}</time> quyctd.dev
       </small>
     </FooterWrapper>
   )

@@ -1,0 +1,15 @@
+.nav {
+  margin-bottom: 2rem;
+  text-align: right;
+}
+
+.navLink {
+  margin-left: 0.75rem;
+  color: #718096;
+  color: rgba(113, 128, 150, 1);
+}
+
+.navLink .active {
+  color: rgba(26, 32, 44, 1);
+  cursor: default;
+}
