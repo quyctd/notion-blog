@@ -8,9 +8,13 @@
  */
 
 .notion {
-  --notion-max-width: 920px;
+  --notion-max-width: 748px;
   --notion-header-height: 54px;
   font-family: "Inter", sans-serif;
+}
+
+.notion * {
+  color: initial;
 }
 
 .notion-viewport {
@@ -33,7 +37,7 @@
   width: 100%;
   max-width: var(--notion-max-width);
   padding-bottom: calc(max(5vh, 32px)) !important;
-  line-height: 1.65;
+  line-height: 1.75;
 }
 
 .index-page {
@@ -42,6 +46,7 @@
 
 .notion-text {
   padding: 0.5em 2px;
+  color: initial;
 }
 
 .notion-asset-caption {

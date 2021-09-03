@@ -12,7 +12,7 @@ const Paragraph = styled.p`
 const Flex = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 742px;
+  max-width: 748px;
   margin: 0 auto;
 `
 
@@ -27,7 +27,7 @@ const Home = () => {
         <Flex>
           <Paragraph>
             Quy (b. 1998 Vietnam, live in Hanoi), is a developer, focusing on
-            the front-end, UI and visual.
+            the front-end, UI and visuals.
           </Paragraph>
           <Paragraph>
             Started programming in high school, after graduated, he joins{" "}
