@@ -39,9 +39,8 @@ export default function Home(props: Props) {
       </Head>
       <Container>
         <PageTitle
-          title="My Thoughts"
-          subtitle="An interesting, super exciting, completely spectacular, or possibly
-            ordinary blog"
+          title="Thoughts"
+          subtitle="My notes, my journeys, and my interests"
         />
         <BlogSection>
           <BlogList>

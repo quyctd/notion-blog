@@ -60,9 +60,7 @@ const Links = styled.div`
 `
 
 const Header = () => {
-  const router = useRouter()
-
-  if (router.pathname.includes("[slug]")) return null
+  // const router = useRouter()
 
   return (
     <Head>

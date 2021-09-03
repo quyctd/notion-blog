@@ -22,16 +22,12 @@ const Title = styled.h1`
 `
 
 const SubTitle = styled.h2`
-  font-size: 21px;
+  font-size: 18px;
   color: #767676;
   line-height: 1.35;
   font-weight: 400;
 
   @media only screen and (max-width: 768px) {
-    font-size: 18px;
-  }
-
-  @media only screen and (max-width: 576px) {
     font-size: 16px;
   }
 `

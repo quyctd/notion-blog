@@ -100,11 +100,6 @@ export default function NotionPage({ recordMap }: any) {
         }}
         recordMap={recordMap}
         fullPage={true}
-        footer={
-          <Link href="/">
-            <a>⏪ Go back home</a>
-          </Link>
-        }
       />
     </>
   )
