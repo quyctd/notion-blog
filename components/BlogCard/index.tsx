@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import dayjs from "dayjs"
 import Link from "next/link"
+import Image from "next/image"
 
 const BlogCardContainer = styled.div`
   position: relative;
@@ -66,7 +67,7 @@ const CardImgContainer = styled.div`
   overflow: hidden;
 `
 
-const StyledImage = styled.img`
+const StyledImage = styled(Image)`
   position: absolute;
   top: 0;
   width: 100%;
@@ -106,7 +107,12 @@ const BlogCard = (props: Props) => {
       <Link href={`/blog/${blog.properties.Slug.rich_text[0].text.content}`}>
         <a style={{ textDecoration: "none" }}>
           <CardImgContainer>
-            <StyledImage src={blog.properties.Thumbnail.url} />
+            <StyledImage
+              layout="fill"
+              objectFit="cover"
+              src={blog.properties.Thumbnail.url}
+              alt="Thumbnail"
+            />
           </CardImgContainer>
           <CardBody>
             <TagContainer>
